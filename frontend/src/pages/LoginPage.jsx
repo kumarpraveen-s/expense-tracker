@@ -49,7 +49,7 @@ const LoginPage = () => {
 
             console.log(data);
 
-            const user = data?.login?.user; // ✅ safely access nested data
+            const user = data?.login; // ✅ safely access nested data
 
             if (user) {
                 // Do something with user: store token, update context, etc.
