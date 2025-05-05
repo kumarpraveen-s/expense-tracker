@@ -14,7 +14,7 @@ Track your personal or business expenses with a clean, modern UI and blazing-fas
 
 ## 🚀 Live Demo
 
-[![Live Site](https://img.shields.io/badge/Live-Demo-00C853?style=for-the-badge&logo=render)](https://your-netlify-app.netlify.app)
+[![Live Site](https://img.shields.io/badge/Live-Demo-00C853?style=for-the-badge&logo=render)](https://expense-tracker-k8hw.onrender.com/)
 
 ---
 
