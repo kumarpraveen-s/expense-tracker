@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import { users } from "../dummyData/data.js";
+import { promisify } from "util";
 import User from "../models/user.model.js";
 
 const userResolver = {
@@ -51,16 +51,24 @@ const userResolver = {
             }
         },
         logout: async (_, __, context) => {
+            const { req, res, logout } = context;
+
             try {
-                await context.logout();
-                req.session.destry((err) => {
-                    if (err) throw err;
-                });
+                // Promisify logout and session.destroy
+                const logoutAsync = promisify(logout).bind(req);
+                const destroySession = promisify(req.session.destroy).bind(
+                    req.session
+                );
+
+                await logoutAsync(); // clean await
+                await destroySession(); // clean await
+
                 res.clearCookie("connect.sid");
+
                 return { message: "Logged out successfully" };
             } catch (error) {
-                console.error("Error in login", error);
-                throw new Error(error.message || "Internal server error");
+                console.error("Logout error:", error);
+                throw new Error(error.message || "Logout failed");
             }
         },
     },
