@@ -1,0 +1,9 @@
+# Node.js dependencies
+/node_modules/
+# Environment files
+.env
+# Build output
+/dist/
+build/
+# vite build output directory
+backend/public/
